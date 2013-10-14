@@ -1,5 +1,5 @@
-
 bindkey -v
+autoload -U colors && colors
 
 # NAVIGATION
 
@@ -8,6 +8,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+alias vbi="vim +BundleInstall +qall"
 
 # ALIASES
 
@@ -50,24 +51,24 @@ unsetopt nomatch
 
 
 #. /usr/bin/z.sh
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:*' stagedstr '%F{28} ☢'
-zstyle ':vcs_info:*' unstagedstr '%F{11} ☠'
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
-zstyle ':vcs_info:*' enable git svn
-precmd () {
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' %F{green}%b%c%u%F{blue} %m'
-    } else {
-        zstyle ':vcs_info:*' formats ' %F{green}%b%c%u%F{red}●%F{blue} '
-    }
-
-    vcs_info
-}
 
 setopt prompt_subst
-PROMPT="%F{magenta}%~${vcs_info_msg_0_}%F{yellow}%  $ %F{grey}% "
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' actionformats \
+    '%F{5}%F{3} %F{5}%F{2}%b%F{3}|%F{1}%a%F{5}%f '
+zstyle ':vcs_info:*' formats       \
+    '%F{5}%F{3} %F{5}%F{2}%b%F{5}%f '
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git
+
+# or use pre_cmd, see man zshcontrib
+vcs_info_wrapper() {
+  vcs_info
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo "%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+  fi
+}
+PROMPT=$'%F{cyan}%~ $(vcs_info_wrapper)'
 
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/amorse/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/bin:/Users/amorse/.rvm/bin:/Users/amorse/depot_tools:/usr/local/share/npm/bin:~/opt/adt/sdk/platform-tools:~/.git-scripts/
