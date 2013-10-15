@@ -20,6 +20,12 @@ setopt AUTO_CD
 # 10 second wait if you do something that will delete everything.  I wish I'd had this before...
 setopt RM_STAR_WAIT
 
+# Better and moving
+alias rmd='rm -rf'
+alias cpd='cp -r'
+
+# Jump into directory and run ls.
+c() { cd $@; ls }
 
 # NAVIGATION
 
@@ -27,7 +33,10 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+alias g=git
 alias h=history
+
 alias -s html=vim
 alias -s css=vim
 alias -s scss=vim
