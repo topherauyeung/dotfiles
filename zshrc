@@ -52,6 +52,7 @@ alias mv="mv -iv"
 alias ls='ls -GFh'
 # Same as above, but in long listing format
 alias ll='ls -GFhl'
+alias l='ls -Gfoa'
 
 # Use modern regexps for sed, i.e. "(one|two)", not "\(one\|two\)"
 alias sed="sed -E"
