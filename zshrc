@@ -8,7 +8,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-alias vbi="vim +BundleInstall +qall"
+alias vbi="vim +BundleInstall +qall" # This installs all vim plugins via vundle
 
 # ALIASES
 

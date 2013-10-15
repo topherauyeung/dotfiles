@@ -1,4 +1,5 @@
 set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
+
 let mapleader = "," "Custom for me, you might want a different leader
 
 set rtp+=~/.vim/bundle/vundle/
@@ -23,7 +24,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'acevery/snipmate-plus'
 Bundle 'nono/vim-handlebars'
 Bundle 'mklabs/grunt.vim'
-
+Bundle 'mileszs/ack.vim'
 
 " VISUAL STUFF
 
@@ -115,7 +116,7 @@ nnoremap tn  :tabnew<CR>
 nnoremap gb  :Gbrowse<CR> " Open current file on github.com
 
 " Local list nav
-nnoremap fj :execute enoautocmd vimgrep /" . expand("<cword>") . "/j **" <Bar> cnext<CR>
+nnoremap fj :execute "noautocmd vimgrep /" . expand("<cword>") . "/j **" <Bar> cnext<CR>
 
 noremap cn :cn<CR>
 nnoremap cp :cp<CR>
@@ -146,5 +147,7 @@ set iskeyword+=- "Makes foo-bar considered one word
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>  " Open with path of file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> " ,ev will open up your vimrc in a vertical split
 nnoremap <leader>ft :set filetype=HTML<cr> ",ft sets filtype to html
+
+set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff
 
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS " Gives css auto completion to files using filetype=css
