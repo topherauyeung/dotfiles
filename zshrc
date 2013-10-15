@@ -1,5 +1,25 @@
+#. /usr/bin/z.sh
+
 bindkey -v
 autoload -U colors && colors
+autoload -U compinit; compinit
+
+
+# Default completion style is quite plain and ugly. If you want to improve its appearance, enter the following commands:
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+zstyle ':completion:*' completer _complete _ignored _files
+zle -C complete-file complete-word _generic
+zstyle ':completion:complete-file::::' completer _files
+zstyle ':completion:*' verbose yes
+bindkey '^xF' complete-file
+
+
+# why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
+# 10 second wait if you do something that will delete everything.  I wish I'd had this before...
+setopt RM_STAR_WAIT
+
 
 # NAVIGATION
 
@@ -7,6 +27,16 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias h=history
+alias -s html=vim
+alias -s css=vim
+alias -s scss=vim
+alias -s hbs=vim
+alias -s rb=vim
+alias -s py=vim
+
+alias ff="find / -type f -name"
+alias f.="find . -type f -name"
 
 alias vbi="vim +BundleInstall +qall" # This installs all vim plugins via vundle
 
@@ -18,7 +48,10 @@ alias qq="source ~/.zshrc"
 alias cp="cp -iv"
 alias rm="rm -iv"
 alias mv="mv -iv"
-alias ls="ls -FGh"
+# Colorize output, add file type indicator, and put sizes in human readable format
+alias ls='ls -GFh'
+# Same as above, but in long listing format
+alias ll='ls -GFhl'
 
 # Use modern regexps for sed, i.e. "(one|two)", not "\(one\|two\)"
 alias sed="sed -E"
@@ -32,11 +65,13 @@ function al { ls -t | head -n ${1:-10}; }
 #  ZSH options
 
 HISTFILE=~/.zsh_history
-export HISTSIZE=1000000000000000000
+export HISTSIZE=100000
 export HISTFILESIZE=$HISTSIZE
 export SAVEHIST=$HISTSIZE
 setopt no_list_beep
 setopt no_beep
+setopt auto_list
+setopt MENU_COMPLETE
 setopt appendhistory
 setopt hist_ignore_all_dups
 setopt hist_reduce_blanks
@@ -48,9 +83,6 @@ unsetopt correctall
 # Allow [ or ] whereever you want
 # (Prevents "zsh: no matches found: ...")
 unsetopt nomatch
-
-
-#. /usr/bin/z.sh
 
 setopt prompt_subst
 autoload -Uz vcs_info
@@ -72,6 +104,6 @@ vcs_info_wrapper() {
     echo "%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}$del"
   fi
 }
-PROMPT=$'%F{cyan}%~ $(vcs_info_wrapper)'
+PROMPT=$'\n%{$reset_color%}$[HISTCMD-1] %F{cyan}%~ $(vcs_info_wrapper) %F{magenta}% \n$ %{$reset_color%}'
 
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/amorse/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/bin:/Users/amorse/.rvm/bin:/Users/amorse/depot_tools:/usr/local/share/npm/bin:~/opt/adt/sdk/platform-tools:~/.git-scripts/
