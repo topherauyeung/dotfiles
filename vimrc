@@ -24,7 +24,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'acevery/snipmate-plus'
 Bundle 'nono/vim-handlebars'
 Bundle 'mklabs/grunt.vim'
-Bundle 'mileszs/ack.vim'
+Bundle 'ag.vim'
 
 " VISUAL STUFF
 
