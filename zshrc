@@ -4,6 +4,7 @@ bindkey -v
 autoload -U colors && colors
 autoload -U compinit; compinit
 
+export NODE_PATH=/usr/local/bin/node
 
 # Default completion style is quite plain and ugly. If you want to improve its appearance, enter the following commands:
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -116,4 +117,6 @@ vcs_info_wrapper() {
 }
 PROMPT=$'%{$fg[yellow]%}$[HISTCMD-1] %F{cyan}%~ $(vcs_info_wrapper) %F{magenta}% \n$ %{$reset_color%}'
 
-export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/amorse/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/bin:/Users/amorse/.rvm/bin:/Users/amorse/depot_tools:/usr/local/share/npm/bin:~/opt/adt/sdk/platform-tools:~/.git-scripts/
+export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/lib/node_modules/npm/bin:/usr/local/lib/node_modules:$PATH
+
+#:/Users/cauyeung/.rvm/gems/ruby-2.0.0-p247/bin:/Users/cauyeung/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/cauyeung/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/cauyeung/.rvm/bin:/Users/cauyeung/.rvm/bin:/Users/cauyeung/depot_tools:/usr/local/share/npm/bin:~/opt/adt/sdk/platform-tools:~/.git-scripts/
