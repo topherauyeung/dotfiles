@@ -97,8 +97,8 @@ unsetopt nomatch
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{yellow}% ☣ '
-zstyle ':vcs_info:*' unstagedstr '%F{red}% ☠ '
+zstyle ':vcs_info:*' stagedstr '%F{yellow}% * '
+zstyle ':vcs_info:*' unstagedstr '%F{red}% * '
 zstyle ':vcs_info:*' actionformats \
     '%F{5}%F{3} %F{5}%F{2}%b%F{3}|%F{1}%a%F{5}%f '
 zstyle ':vcs_info:*' formats       \
@@ -114,6 +114,6 @@ vcs_info_wrapper() {
     echo "%{$fg[yellow]%}${vcs_info_msg_0_}%{$reset_color%}$del"
   fi
 }
-PROMPT=$'\n%{$reset_color%}$[HISTCMD-1] %F{cyan}%~ $(vcs_info_wrapper) %F{magenta}% \n$ %{$reset_color%}'
+PROMPT=$'%{$fg[yellow]%}$[HISTCMD-1] %F{cyan}%~ $(vcs_info_wrapper) %F{magenta}% \n$ %{$reset_color%}'
 
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/amorse/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/amorse/.rvm/bin:/Users/amorse/.rvm/bin:/Users/amorse/depot_tools:/usr/local/share/npm/bin:~/opt/adt/sdk/platform-tools:~/.git-scripts/
