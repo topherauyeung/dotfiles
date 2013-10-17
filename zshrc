@@ -117,6 +117,5 @@ vcs_info_wrapper() {
 }
 PROMPT=$'%{$fg[yellow]%}$[HISTCMD-1] %F{cyan}%~ $(vcs_info_wrapper) %F{magenta}% \n$ %{$reset_color%}'
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/lib/node_modules/npm/bin:/usr/local/lib/node_modules:$PATH
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin:~/bin:/usr/local/lib/node_modules/npm/bin:/usr/local/lib/node_modules
 
-#:/Users/cauyeung/.rvm/gems/ruby-2.0.0-p247/bin:/Users/cauyeung/.rvm/gems/ruby-2.0.0-p247@global/bin:/Users/cauyeung/.rvm/rubies/ruby-2.0.0-p247/bin:/Users/cauyeung/.rvm/bin:/Users/cauyeung/.rvm/bin:/Users/cauyeung/depot_tools:/usr/local/share/npm/bin:~/opt/adt/sdk/platform-tools:~/.git-scripts/

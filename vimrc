@@ -1,15 +1,16 @@
 set nocompatible      " This should be the first line. It sets vim to not be backwards compatible with vi.
-
+"
+"
 let mapleader = "," "Custom for me, you might want a different leader
-
+"
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
+"
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/syntastic'
+""Bundle 'scrooloose/syntastic'
 Bundle 'othree/html5.vim'
 Bundle 'tristen/vim-sparkup'
 Bundle 'hail2u/vim-css3-syntax'
@@ -19,25 +20,26 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-surround'
-Bundle 'joestelmach/lint.vim'
+"Bundle 'joestelmach/lint.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'acevery/snipmate-plus'
 Bundle 'nono/vim-handlebars'
 Bundle 'mklabs/grunt.vim'
-Bundle 'ag.vim'
+"Bundle 'ag.vim'
 
-" VISUAL STUFF
-
+"
+"" VISUAL STUFF
+"
 set title             " Sets the title at top of tab to be the filename if "titlestring" isn't defined
 set laststatus=2      " Has to do with the status bar at the bottom. Check :help laststatus
 set number            " Line numbers on the left hand side
 set visualbell        " That bell is the worst sound. Shut it the fuck off.
 syntax on             " Sets syntax highlighting on because what is this notepad
 filetype plugin indent on " This gets vim to automatically load filetype specific options for plugins and indentation
-
-
-" BASIC FUNCTIONALITY
-
+"
+"
+"" BASIC FUNCTIONALITY
+"
 set encoding=utf-8    " Duh
 set history=512       " Default is 20, I'd rather set this to ∞
 set nofoldenable      " Don't fold shit because it's the worst.
@@ -67,6 +69,8 @@ au BufEnter *.scss set nocindent
 au BufLeave *.scss set cindent
 
 autocmd BufNewFile,BufRead *.scss set ft=scss.css "Sets filetpe of scss to be css. Helps with plugins.
+
+autocmd BufNewFile,BufRead *.json set ft=json
 
 
 imap <leader>,m <c-x><c-o> "Omni completion
@@ -103,7 +107,7 @@ endif
 
 set statusline+=%#warningmsg#
 set statusline+=%*
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 
 
 " Tab Navigation
@@ -126,12 +130,12 @@ nnoremap ff :CtrlP<CR>
 nnoremap -- :GundoToggle<CR>
 
 " Only set if you use Syntastic
-let g:syntastic_auto_loc_list=2
-let g:syntastic_auto_jump=0
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_ignore_files=['\.scss']
+"let g:syntastic_auto_loc_list=2
+"let g:syntastic_auto_jump=0
+"let g:syntastic_enable_highlighting = 0
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_loc_list_height=5
+"let g:syntastic_ignore_files=['\.scss']
 
 "" Ignore node_modules in CtrlP
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
