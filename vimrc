@@ -10,9 +10,8 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
-""Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 Bundle 'othree/html5.vim'
-Bundle 'tristen/vim-sparkup'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tomtom/tlib_vim'
@@ -23,9 +22,10 @@ Bundle 'tpope/vim-surround'
 "Bundle 'joestelmach/lint.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'acevery/snipmate-plus'
+Bundle 'tristen/vim-sparkup'
 Bundle 'nono/vim-handlebars'
 Bundle 'mklabs/grunt.vim'
-"Bundle 'ag.vim'
+Bundle 'ag.vim'
 
 "
 "" VISUAL STUFF
@@ -58,8 +58,7 @@ autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace on save
 set smartindent
 set tabstop=2
 set shiftwidth=2
-set expandtab
-
+"set expandtab
 
 " Fix indenting for css style things (sass, css)
 
@@ -107,7 +106,7 @@ endif
 
 set statusline+=%#warningmsg#
 set statusline+=%*
-"set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{SyntasticStatuslineFlag()}
 
 
 " Tab Navigation
@@ -130,12 +129,12 @@ nnoremap ff :CtrlP<CR>
 nnoremap -- :GundoToggle<CR>
 
 " Only set if you use Syntastic
-"let g:syntastic_auto_loc_list=2
-"let g:syntastic_auto_jump=0
-"let g:syntastic_enable_highlighting = 0
-"let g:syntastic_always_populate_loc_list=1
-"let g:syntastic_loc_list_height=5
-"let g:syntastic_ignore_files=['\.scss']
+let g:syntastic_auto_loc_list=2
+let g:syntastic_auto_jump=0
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_loc_list_height=5
+let g:syntastic_ignore_files=['\.scss']
 
 "" Ignore node_modules in CtrlP
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules)$'
@@ -150,6 +149,8 @@ set iskeyword+=- "Makes foo-bar considered one word
 
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>  " Open with path of file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr> " ,ev will open up your vimrc in a vertical split
+nnoremap <leader>eh :vsplit ~/.vim/bundle/snipmate-plus/snippets/html.snippets<cr> " ,eh will open up the html snippets file
+nnoremap <leader>sv :so $MYVIMRC<cr> " ,sv will source your vimrc
 nnoremap <leader>ft :set filetype=HTML<cr> ",ft sets filtype to html
 
 set wildignore=node_modules/*,*.jpg,*.png,*.gif,*.woff

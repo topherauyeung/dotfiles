@@ -15,6 +15,11 @@
   pomu = push -u origin master
   pou = push -u origin
   po = push origin
+	subupir = submodule update --init --recursive
+	pullup = pull upstream
+	mergeupmaster = merge upstream/master master
+	mergeupstable = merge upstream/stable stable
+	fetchup = fetch upstream
 
 [color]
   ui = auto
@@ -40,3 +45,6 @@
 
 [core]
 	excludesfile = ~/.gitignore
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
